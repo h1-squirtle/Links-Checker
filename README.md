@@ -1,17 +1,31 @@
 # Links-Checker
 Tool which lets you check HTTP status code of links from a file. Results will be printed on screen.
 
-**Syntax:**
-
+**1. Output shown on screen:**
+--
+```
 python linkschecker.py \<filename-containing-links\>
+```
 
 **Expected output:**
+```
+https://baseurl.com: 200
+https://baseurl.com: 404
+https://baseurl.com: 500
+https://baseurl.com: 200
+https://baseurl.com: Unable to conenct
+```
 
-`https://baseurl.com  <statuscode>`
+**2. Save output to file:**
+--
+```
+python linkschecker.py \<filename-containing-links\> -o newFileName.txt
+```
 
-`https://baseurl.com   200`
-
+**Expected output:**
+```
+Results has been stored to 'output' file.
+```
 Future work:
 --
-1. Add option to let user save results to a file.
-2. Add multithreading to run multiple requests at a time to reduce time.
+1. Add multithreading to run multiple requests at a time to reduce time.
