@@ -1,29 +1,69 @@
 import requests
 import sys
 import os
+import argparse
 
 print("===LinkChecker v1===\n")
 
+#adding and parsing arguments
+parser=argparse.ArgumentParser()
+parser.add_argument("filename",help="Filename or filepath")
+parser.add_argument("-o","--output", help="Save result in a output a new file. '-o filename.txt'")
+args = parser.parse_args()
+
+
 #Filename/path check
-if (os.path.isfile(sys.argv[1]))==False:
-    print("File not found/Filename incorrect.\nSyntax: 'python linkchecker.py <filename>'\n")
+if (os.path.isfile(args.filename))==False:
+    print("Invalid File Name")
     sys.exit()
 
 #open file and store its content in variable
-f=open(sys.argv[1],"r")
+f=open(args.filename,"r")
 data=f.read()
 
 #Converting file contents into list.
 data=data.split("\n")
 
-status_code=""
 #looping through each list item and printing results.
-for x in data:
-    try:
-        r=requests.get(x,timeout=3)
-        status_code=r.status_code
-        print(x,": ",status_code)
-    except :
-        print(x,": Unable to connect.")
+result=""
+status_code=""
+xd=open(args.output,"w")
 
+#function if output is not selected
+def on_screenFunc():
+        for x in data:
+            try:
+                r=requests.get(x,timeout=3)
+                status_code=r.status_code
+
+                result=f"{x} :{status_code}"
+                print(result)
+            except:
+                 result=f"{x}: Unable to connect."
+                 print(result)
+
+
+#function if output is selected
+def outputFunc():
+    for x in data:
+        try:
+            r = requests.get(x, timeout=3)
+            status_code = r.status_code
+
+            result = f"{x} :{status_code}\n"
+            xd.write(result)
+            print(result)
+        except:
+            result = f"{x}: Unable to connect.\n"
+            xd.write(result)
+
+#if -o argument is provided
+if args.output:
+    outputFunc()
+
+#if -o argument is not provided
+else:
+    on_screenFunc()
+
+#Closing opened file.
 f.close()
