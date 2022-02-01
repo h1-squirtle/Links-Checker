@@ -4,7 +4,7 @@ Tool which lets you check HTTP status code of links from a file. Results will be
 **1. Output shown on screen:**
 --
 ```
-python linkschecker.py \<filename-containing-links\>
+python linkschecker.py <filename-containing-links>
 ```
 
 **Expected output:**
@@ -18,7 +18,7 @@ https://baseurl.com: Unable to conenct
 **2. Save output to file:**
 --
 ```
-python linkschecker.py \<filename-containing-links\> -o newFileName.txt
+python linkschecker.py <filename-containing-links> -o newFileName.txt
 ```
 
 **Expected output:**
