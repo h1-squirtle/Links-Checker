@@ -56,7 +56,7 @@ def outputFunc():
         except:
             result = f"{x}: Unable to connect.\n"
             xd.write(result)
-
+    print(f"Results has been saved to '{args.output}' file")
 #if -o argument is provided
 if args.output:
     outputFunc()
