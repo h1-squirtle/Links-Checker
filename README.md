@@ -12,7 +12,6 @@ python linkschecker.py \<filename-containing-links\>
 https://baseurl.com: 200
 https://baseurl.com: 404
 https://baseurl.com: 500
-https://baseurl.com: 200
 https://baseurl.com: Unable to conenct
 ```
 
