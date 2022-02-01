@@ -1,5 +1,4 @@
 import requests
-import sys
 import os
 import argparse
 
@@ -14,8 +13,8 @@ args = parser.parse_args()
 
 #Filename/path check
 if (os.path.isfile(args.filename))==False:
-    print("Invalid File Name")
-    sys.exit()
+    print("Invalid File Name or file not found")
+    exit()
 
 #open file and store its content in variable
 f=open(args.filename,"r")
