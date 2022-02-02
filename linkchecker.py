@@ -2,7 +2,7 @@ import requests
 import os
 import argparse
 
-print("===LinkChecker v1===\n")
+print("===Link Checker Tool===\n")
 
 #adding and parsing arguments
 parser=argparse.ArgumentParser()
