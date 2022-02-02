@@ -14,6 +14,8 @@ https://baseurl.com: 404
 https://baseurl.com: 500
 https://baseurl.com: Unable to conenct
 ```
+Please check 'urls.txt' file for url format in file
+
 
 **2. Save output to file:**
 --
@@ -25,6 +27,7 @@ python linkschecker.py <filename-containing-links> -o newFileName.txt
 ```
 Results has been stored to 'output' file.
 ```
+
 Future work:
 --
 1. Add multithreading to run multiple requests at a time to reduce time.
