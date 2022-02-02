@@ -26,7 +26,10 @@ data=data.split("\n")
 #looping through each list item and printing results.
 result=""
 status_code=""
-xd=open(args.output,"w")
+
+#opening output file in write mode if -o argument is provided
+if args.output:
+    xd=open(args.output,"w")
 
 #function if output is not selected
 def on_screenFunc():
