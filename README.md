@@ -14,7 +14,7 @@ https://baseurl.com: 404
 https://baseurl.com: 500
 https://baseurl.com: Unable to conenct
 ```
-Please check 'urls.txt' file for url format in file
+Please check 'urls.txt' file for url format
 
 
 **2. Save output to file:**
