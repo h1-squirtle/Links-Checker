@@ -1,5 +1,5 @@
 # Links-Checker
-Tool which lets you check HTTP status code of links from a file. Results will be printed on screen.
+Tool which lets you check HTTP status code of links from a file. Results can be seen on screen and can be saved to a file. 
 
 **1. Output shown on screen:**
 --
