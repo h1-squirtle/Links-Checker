@@ -28,6 +28,6 @@ python linkschecker.py <filename-containing-links> -o newFileName.txt
 Results has been stored to 'output' file.
 ```
 
-Future work:
---
-1. Add multithreading to run multiple requests at a time to reduce time.
+**New Feature:**
+---
+Added support for the multi-threading. Script execution time is reduced.
