@@ -35,7 +35,7 @@ if args.output:
 #function if output is not selected
 def on_screenFunc(x):
             try:
-                r=requests.get(x,timeout=0.5)
+                r=requests.get(x,timeout=1)
                 status_code=r.status_code
 
                 result=f"{x} :{status_code}"
@@ -47,7 +47,7 @@ def on_screenFunc(x):
 #function if output is selected
 def outputFunc(x):
         try:
-            r = requests.get(x, timeout=0.5)
+            r = requests.get(x, timeout=1)
             status_code = r.status_code
 
             result = f"{x} :{status_code}\n"
