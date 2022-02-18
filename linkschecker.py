@@ -1,6 +1,7 @@
 import requests
 import os
 import argparse
+import concurrent.futures as cp
 
 print("===LinksChecker===\n")
 
@@ -32,10 +33,9 @@ if args.output:
     xd=open(args.output,"w")
 
 #function if output is not selected
-def on_screenFunc():
-        for x in data:
+def on_screenFunc(x):
             try:
-                r=requests.get(x,timeout=3)
+                r=requests.get(x,timeout=0.5)
                 status_code=r.status_code
 
                 result=f"{x} :{status_code}"
@@ -44,12 +44,10 @@ def on_screenFunc():
                  result=f"{x}: Unable to connect."
                  print(result)
 
-
 #function if output is selected
-def outputFunc():
-    for x in data:
+def outputFunc(x):
         try:
-            r = requests.get(x, timeout=3)
+            r = requests.get(x, timeout=0.5)
             status_code = r.status_code
 
             result = f"{x} :{status_code}\n"
@@ -58,14 +56,17 @@ def outputFunc():
         except:
             result = f"{x}: Unable to connect.\n"
             xd.write(result)
-    print(f"Results has been saved to '{args.output}' file")
+
 #if -o argument is provided
 if args.output:
-    outputFunc()
+    with cp.ThreadPoolExecutor(max_workers=10) as executor:
+        future = executor.map(outputFunc, data)
+    print(f"Results has been saved to '{args.output}' file")
 
 #if -o argument is not provided
 else:
-    on_screenFunc()
+    with cp.ThreadPoolExecutor(max_workers=10) as executor:
+        future = executor.map(on_screenFunc, data)
 
 #Closing opened file.
 f.close()
